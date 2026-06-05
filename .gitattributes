@@ -1,0 +1,12 @@
+﻿# Enforce LF line endings for text files in the repo
+* text=auto eol=lf
+
+# Treat common binary files as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+
