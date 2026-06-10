@@ -259,7 +259,7 @@ const AdminScanner = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#030303] grid-bg text-white pt-24 pb-16 relative">
+    <div className="min-h-screen bg-white grid-bg text-black pt-24 pb-16 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-[#030303] via-transparent to-[#030303] pointer-events-none" />
       
       <div className="max-w-6xl mx-auto px-4 relative z-10">
@@ -270,12 +270,12 @@ const AdminScanner = () => {
               <Link 
                 to="/admin" 
                 onClick={stopScanner}
-                className="p-2 border border-slate-800 hover:border-slate-700 bg-slate-950/80 rounded transition"
+                className="p-2 border border-slate-800 hover:border-slate-700 bg-slate-50/80 rounded transition"
               >
-                <ArrowLeft className="w-4 h-4 text-gray-400 hover:text-white" />
+                <ArrowLeft className="w-4 h-4 text-gray-400 hover:text-black" />
               </Link>
               <div>
-                <h1 className="text-2xl font-bold font-mono tracking-widest bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent text-glow-cyan">
+                <h1 className="text-2xl font-bold font-mono tracking-widest text-black">
                   GATE CLEARANCE SCANNERS
                 </h1>
                 <p className="text-[10px] text-gray-500 font-mono tracking-wider">
@@ -304,7 +304,7 @@ const AdminScanner = () => {
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-cyan-400" />
               
               <div className="flex justify-between items-center mb-4">
-                <span className="font-mono text-xs font-semibold tracking-widest text-slate-400 flex items-center gap-1.5">
+                <span className="font-mono text-xs font-semibold tracking-widest text-black flex items-center gap-1.5">
                   <Camera className="w-3.5 h-3.5 text-cyan-400" />
                   OPTICAL SCANNING VIEWPORT
                 </span>
@@ -340,11 +340,11 @@ const AdminScanner = () => {
                   </div>
                 ) : (
                   <div className="text-center p-6 space-y-4">
-                    <div className="w-16 h-16 mx-auto bg-slate-900 border border-slate-800 rounded-full flex items-center justify-center">
+                    <div className="w-16 h-16 mx-auto bg-slate-100 border border-slate-800 rounded-full flex items-center justify-center">
                       <QrCode className="w-8 h-8 text-slate-500" />
                     </div>
                     <div>
-                      <p className="font-mono text-sm text-slate-400">Optical stream offline</p>
+                      <p className="font-mono text-sm text-black">Optical stream offline</p>
                       {cameraError ? (
                         <p className="text-red-400 text-xs mt-1 font-mono">{cameraError}</p>
                       ) : (
@@ -364,7 +364,7 @@ const AdminScanner = () => {
 
             {/* Override Manual Input Form */}
             <div className="glass-panel p-5 rounded-lg border border-slate-800">
-              <h3 className="font-mono text-xs font-semibold text-slate-400 mb-3 flex items-center gap-1.5">
+              <h3 className="font-mono text-xs font-semibold text-black mb-3 flex items-center gap-1.5">
                 <Keyboard className="w-3.5 h-3.5 text-cyan-400" />
                 MANUAL ATTENDEE BYPASS OVERRIDE
               </h3>
@@ -375,12 +375,12 @@ const AdminScanner = () => {
                   placeholder="Enter alphanumeric pass ID code (e.g. QP-XXXXX)..."
                   value={manualCode}
                   onChange={(e) => setManualCode(e.target.value)}
-                  className="flex-1 px-4 py-2.5 font-mono text-xs bg-slate-950 border border-slate-800 rounded focus:border-cyan-500 focus:outline-none transition duration-300 text-white"
+                  className="flex-1 px-4 py-2.5 font-mono text-xs bg-slate-50 border border-slate-800 rounded focus:border-cyan-500 focus:outline-none transition duration-300 text-black"
                 />
                 <button
                   type="submit"
                   disabled={!manualCode.trim() || validationLoading}
-                  className="px-5 py-2.5 font-mono text-xs font-bold tracking-wider rounded bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white transition disabled:opacity-40"
+                  className="px-5 py-2.5 font-mono text-xs font-bold tracking-wider rounded bg-slate-100 hover:bg-slate-800 border border-slate-700 text-black transition disabled:opacity-40"
                 >
                   VERIFY PASSPORT
                 </button>
@@ -423,14 +423,14 @@ const AdminScanner = () => {
                           </div>
                         </div>
 
-                        <div className="space-y-2 font-mono text-xs bg-slate-950/40 p-4 rounded-md border border-slate-900">
+                        <div className="space-y-2 font-mono text-xs bg-slate-50/40 p-4 rounded-md border border-slate-900">
                           <div className="flex justify-between border-b border-slate-900 pb-1">
                             <span className="text-gray-500">ATTENDEE GUEST:</span>
-                            <span className="text-white font-bold">{validationResult.attendee.name}</span>
+                            <span className="text-black font-bold">{validationResult.attendee.name}</span>
                           </div>
                           <div className="flex justify-between border-b border-slate-900 pb-1">
                             <span className="text-gray-500">EMAIL:</span>
-                            <span className="text-white truncate max-w-[180px]">{validationResult.attendee.email}</span>
+                            <span className="text-black truncate max-w-[180px]">{validationResult.attendee.email}</span>
                           </div>
                           <div className="flex justify-between border-b border-slate-900 pb-1">
                             <span className="text-gray-500">BOOKING ID:</span>
@@ -438,7 +438,7 @@ const AdminScanner = () => {
                           </div>
                           <div className="flex justify-between">
                             <span className="text-gray-500">PRODUCT ALLOC:</span>
-                            <span className="text-white font-bold">{validationResult.attendee.model} ({validationResult.attendee.capacity} KW)</span>
+                            <span className="text-black font-bold">{validationResult.attendee.model} ({validationResult.attendee.capacity} KW)</span>
                           </div>
                         </div>
                       </div>
@@ -455,15 +455,15 @@ const AdminScanner = () => {
 
                         <div className="space-y-2 font-mono text-xs bg-red-950/10 p-4 rounded-md border border-red-900/20">
                           <div className="flex justify-between border-b border-red-900/10 pb-1">
-                            <span className="text-slate-400">ATTENDEE FLAG:</span>
-                            <span className="text-white font-bold">{validationResult.attendee?.name}</span>
+                            <span className="text-black">ATTENDEE FLAG:</span>
+                            <span className="text-black font-bold">{validationResult.attendee?.name}</span>
                           </div>
                           <div className="flex justify-between border-b border-red-900/10 pb-1">
-                            <span className="text-slate-400">BOOKING ID:</span>
-                            <span className="text-white font-bold">{validationResult.attendee?.booking_id}</span>
+                            <span className="text-black">BOOKING ID:</span>
+                            <span className="text-black font-bold">{validationResult.attendee?.booking_id}</span>
                           </div>
                           <div className="flex justify-between border-b border-red-900/10 pb-1">
-                            <span className="text-slate-400">PREVIOUS SCAN:</span>
+                            <span className="text-black">PREVIOUS SCAN:</span>
                             <span className="text-red-400 font-bold">{validationResult.scanTime}</span>
                           </div>
                           <div className="text-[10px] text-red-400 text-center font-bold tracking-widest pt-2">
@@ -482,7 +482,7 @@ const AdminScanner = () => {
                           </div>
                         </div>
 
-                        <p className="text-xs text-slate-400 font-mono text-center pt-2 leading-relaxed">
+                        <p className="text-xs text-black font-mono text-center pt-2 leading-relaxed">
                           Please verify credentials structure. Scan code may be corrupted, counterfeit, or registration database connection is down.
                         </p>
                       </div>
@@ -495,7 +495,7 @@ const AdminScanner = () => {
                           setScanResult(null);
                           if (!isScanning) startScanner();
                         }}
-                        className="w-full py-2 bg-slate-950 hover:bg-slate-900 border border-slate-800 rounded font-mono text-xs font-semibold text-slate-400 hover:text-white transition"
+                        className="w-full py-2 bg-slate-50 hover:bg-slate-100 border border-slate-800 rounded font-mono text-xs font-semibold text-black hover:text-black transition"
                       >
                         RESET CLEARED BARRIER
                       </button>
@@ -504,7 +504,7 @@ const AdminScanner = () => {
                 </AnimatePresence>
               ) : (
                 <div className="flex-1 flex flex-col items-center justify-center text-slate-500 space-y-3 py-6">
-                  <QrCode className="w-12 h-12 text-slate-700 animate-pulse" />
+                  <QrCode className="w-12 h-12 text-black animate-pulse" />
                   <p className="font-mono text-xs text-center">
                     Awaiting gate scanned inputs...<br />
                     Place booking QR code within viewport range.
@@ -515,7 +515,7 @@ const AdminScanner = () => {
 
             {/* SCANNING SESSION HISTORY */}
             <div className="glass-panel p-5 rounded-lg border border-slate-800 flex flex-col max-h-[300px]">
-              <h3 className="font-mono text-xs font-semibold text-slate-400 mb-4 flex items-center gap-1.5">
+              <h3 className="font-mono text-xs font-semibold text-black mb-4 flex items-center gap-1.5">
                 <History className="w-3.5 h-3.5 text-cyan-400" />
                 SESSION VERIFICATION LOGS
               </h3>
@@ -525,10 +525,10 @@ const AdminScanner = () => {
                   scanHistory.map((log, idx) => (
                     <div 
                       key={idx}
-                      className="p-3 border border-slate-900 bg-slate-950/20 rounded flex justify-between items-center font-mono text-xs"
+                      className="p-3 border border-slate-900 bg-slate-50/20 rounded flex justify-between items-center font-mono text-xs"
                     >
                       <div className="space-y-1">
-                        <div className="flex items-center gap-1.5 font-bold text-white">
+                        <div className="flex items-center gap-1.5 font-bold text-black">
                           {log.status === 'success' ? (
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
                           ) : (
@@ -536,7 +536,7 @@ const AdminScanner = () => {
                           )}
                           {log.name}
                         </div>
-                        <div className="text-[10px] text-slate-400">Code: {log.code}</div>
+                        <div className="text-[10px] text-black">Code: {log.code}</div>
                         <div className="text-[10px] text-cyan-400/80">Model: {log.model}</div>
                       </div>
 
@@ -555,7 +555,7 @@ const AdminScanner = () => {
                     </div>
                   ))
                 ) : (
-                  <div className="h-28 flex items-center justify-center text-slate-600 font-mono text-xs">
+                  <div className="h-28 flex items-center justify-center text-black font-mono text-xs">
                     NO PASSES SCANNED YET
                   </div>
                 )}
@@ -569,3 +569,4 @@ const AdminScanner = () => {
 };
 
 export default AdminScanner;
+

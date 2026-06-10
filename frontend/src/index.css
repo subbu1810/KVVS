@@ -4,9 +4,9 @@
 
 @layer base {
   body {
-    background-color: #030303;
+    background-color: #ffffff;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    color: #f4f4f5;
+    color: #000000;
     overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -18,11 +18,11 @@
 
 /* Futuristic Premium Glassmorphism Panels */
 .glass-panel {
-  background: rgba(9, 9, 11, 0.65);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -31,9 +31,9 @@
 }
 
 .glass-panel-hover:hover {
-  background: rgba(15, 15, 18, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   border-color: rgba(0, 242, 254, 0.3);
-  box-shadow: 0 0 40px rgba(0, 242, 254, 0.08), inset 0 0 12px rgba(255, 255, 255, 0.02);
+  box-shadow: 0 0 40px rgba(0, 242, 254, 0.08), inset 0 0 12px rgba(0, 0, 0, 0.02);
   transform: translateY(-4px);
 }
 
@@ -58,8 +58,8 @@
 .grid-bg {
   position: relative;
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
@@ -67,7 +67,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(3, 3, 3, 0) 15%, #030303 80%);
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0) 15%, #ffffff 80%);
   pointer-events: none;
 }
 
@@ -90,14 +90,14 @@
 /* Neon Gradient Buttons */
 .btn-cyber {
   position: relative;
-  background: linear-gradient(135deg, #00f2fe 0%, #3b82f6 100%);
-  color: #030303;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: #ffffff;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   letter-spacing: 0.08em;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
-  border: 1px solid rgba(0, 242, 254, 0.25);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  border: 1px solid rgba(59, 130, 246, 0.4);
   overflow: hidden;
   text-transform: uppercase;
 }
@@ -124,8 +124,8 @@
 
 .btn-cyber:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(0, 242, 254, 0.5);
-  border-color: rgba(0, 242, 254, 0.5);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  border-color: rgba(59, 130, 246, 0.6);
 }
 
 /* Custom High-Tech Scrollbars */
@@ -135,17 +135,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #030303;
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 9999px;
-  border: 1px solid #030303;
+  border: 1px solid #ffffff;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 /* Cyber Scanning Line */

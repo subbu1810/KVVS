@@ -12,7 +12,10 @@ const Signup = () => {
     email: '',
     password: '',
     mobile: '',
-    address: ''
+    address: '',
+    city: '',
+    state: '',
+    pincode: ''
   });
   const [errorMsg, setErrorMsg] = useState('');
   const [loading, setLoading] = useState(false);
@@ -48,25 +51,25 @@ const Signup = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#030303] flex items-center justify-center pt-28 pb-20 px-4 overflow-hidden">
-      
+    <div className="relative min-h-screen bg-white flex items-center justify-center pt-28 pb-20 px-4 overflow-hidden">
+
       {/* Decorative background grid */}
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
-      <div className="absolute w-96 h-96 rounded-full bg-cyan-500/5 blur-[120px] pointer-events-none"></div>
+      <div className="absolute w-96 h-96 rounded-full bg-blue-500/5 blur-[120px] pointer-events-none"></div>
 
       <div className="w-full max-w-md relative z-10">
-        
+
         {/* Sleek Glassmorphism Container */}
         <div className="glass-panel border border-slate-800/80 rounded-2xl p-6 sm:p-8 shadow-2xl relative">
           {/* Glowing top line */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00f2fe] to-transparent"></div>
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
 
           {/* Form Header */}
           <div className="text-center mb-8">
-            <h2 className="font-orbitron font-extrabold text-xl sm:text-2xl text-slate-100 uppercase tracking-widest">
+            <h2 className="font-orbitron font-extrabold text-xl sm:text-2xl text-black uppercase tracking-widest">
               REGISTER CLEARANCE
             </h2>
-            <p className="text-[11px] text-slate-400 mt-2">Establish VIP attendee network coordinates</p>
+            <p className="text-[11px] text-black mt-2">Establish VIP attendee network coordinates</p>
           </div>
 
           {/* Error Alert Box */}
@@ -80,7 +83,7 @@ const Signup = () => {
           {/* Form Fields */}
           <form onSubmit={handleSubmit} className="space-y-4 text-xs sm:text-sm">
             <div>
-              <label className="font-orbitron text-xs text-slate-400 block mb-2">FULL NAME</label>
+              <label className="font-orbitron text-xs text-black block mb-2">FULL NAME</label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                 <input
@@ -89,13 +92,13 @@ const Signup = () => {
                   placeholder="John Doe"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full pl-10 pr-4 py-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
+                  className="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-800 rounded-lg text-black placeholder-slate-600 focus:outline-none focus:border-blue-500/60 focus:ring-1 focus:ring-blue-500/30 transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label className="font-orbitron text-xs text-slate-400 block mb-2">EMAIL COORDINATES</label>
+              <label className="font-orbitron text-xs text-black block mb-2">EMAIL COORDINATES</label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                 <input
@@ -104,14 +107,14 @@ const Signup = () => {
                   placeholder="john@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full pl-10 pr-4 py-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
+                  className="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-800 rounded-lg text-black placeholder-slate-600 focus:outline-none focus:border-blue-500/60 focus:ring-1 focus:ring-blue-500/30 transition-colors"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="font-orbitron text-xs text-slate-400 block mb-2">MOBILE DIGITS</label>
+                <label className="font-orbitron text-xs text-black block mb-2">MOBILE DIGITS</label>
                 <div className="relative">
                   <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                   <input
@@ -120,13 +123,13 @@ const Signup = () => {
                     placeholder="9876543210"
                     value={formData.mobile}
                     onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                    className="w-full pl-10 pr-4 py-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
+                    className="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-800 rounded-lg text-black placeholder-slate-600 focus:outline-none focus:border-blue-500/60 focus:ring-1 focus:ring-blue-500/30 transition-colors"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="font-orbitron text-xs text-slate-400 block mb-2">ACCESS PIN (PASS)</label>
+                <label className="font-orbitron text-xs text-black block mb-2">ACCESS PIN (PASS)</label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                   <input
@@ -135,24 +138,62 @@ const Signup = () => {
                     placeholder="••••••••"
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    className="w-full pl-10 pr-4 py-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
+                    className="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-800 rounded-lg text-black placeholder-slate-600 focus:outline-none focus:border-blue-500/60 focus:ring-1 focus:ring-blue-500/30 transition-colors"
                   />
                 </div>
               </div>
             </div>
 
             <div>
-              <label className="font-orbitron text-xs text-slate-400 block mb-2">SHIPPING/GRID ADDRESS</label>
+              <label className="font-orbitron text-xs text-black block mb-2">ADDRESS</label>
               <div className="relative">
                 <MapPin className="absolute left-3 top-2.5 w-4 h-4 text-slate-500" />
                 <textarea
                   required
-                  rows="3"
-                  placeholder="Type your physical coordinates..."
+                  rows="2"
+                  placeholder="Street Address..."
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                  className="w-full pl-10 pr-4 py-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30 transition-colors resize-none"
+                  className="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-800 rounded-lg text-black placeholder-slate-600 focus:outline-none focus:border-blue-500/60 focus:ring-1 focus:ring-blue-500/30 transition-colors resize-none"
                 ></textarea>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label className="font-orbitron text-xs text-black block mb-2">CITY</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="City"
+                  value={formData.city}
+                  onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                  className="w-full px-4 py-2.5 bg-slate-100 border border-slate-800 rounded-lg text-black placeholder-slate-600 focus:outline-none focus:border-blue-500/60 focus:ring-1 focus:ring-blue-500/30 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="font-orbitron text-xs text-black block mb-2">STATE</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="State"
+                  value={formData.state}
+                  onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+                  className="w-full px-4 py-2.5 bg-slate-100 border border-slate-800 rounded-lg text-black placeholder-slate-600 focus:outline-none focus:border-blue-500/60 focus:ring-1 focus:ring-blue-500/30 transition-colors"
+                />
+              </div>
+
+              <div>
+                <label className="font-orbitron text-xs text-black block mb-2">PINCODE</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Pincode"
+                  value={formData.pincode}
+                  onChange={(e) => setFormData({ ...formData, pincode: e.target.value })}
+                  className="w-full px-4 py-2.5 bg-slate-100 border border-slate-800 rounded-lg text-black placeholder-slate-600 focus:outline-none focus:border-blue-500/60 focus:ring-1 focus:ring-blue-500/30 transition-colors"
+                />
               </div>
             </div>
 
@@ -173,10 +214,10 @@ const Signup = () => {
           </form>
 
           {/* Already have an account */}
-          <div className="text-center mt-6 pt-4 border-t border-slate-800/60 text-xs text-slate-400">
+          <div className="text-center mt-6 pt-4 border-t border-slate-800/60 text-xs text-black">
             <p>
               Already registered?{' '}
-              <Link to="/login" className="text-[#00f2fe] font-bold hover:underline">
+              <Link to="/login" className="text-blue-600 font-bold hover:underline">
                 Establish Terminal Access
               </Link>
             </p>
@@ -190,3 +231,4 @@ const Signup = () => {
 };
 
 export default Signup;
+

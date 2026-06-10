@@ -38,14 +38,14 @@ const ConfirmModal = ({ message, onConfirm, onCancel }) => (
     >
       <div className="flex items-center gap-3 mb-4">
         <AlertTriangle className="w-6 h-6 text-amber-400 flex-shrink-0" />
-        <h3 className="font-bold text-white font-mono tracking-wide">CONFIRM ACTION</h3>
+        <h3 className="font-bold text-black font-mono tracking-wide">CONFIRM ACTION</h3>
       </div>
       <p className="text-zinc-300 text-sm mb-6 font-mono leading-relaxed">{message}</p>
       <div className="flex gap-3">
         <button onClick={onCancel} className="flex-1 py-2 rounded-lg border border-zinc-700 text-zinc-400 hover:bg-zinc-800 transition text-sm font-mono">
           CANCEL
         </button>
-        <button onClick={onConfirm} className="flex-1 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white transition text-sm font-mono font-bold">
+        <button onClick={onConfirm} className="flex-1 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-black transition text-sm font-mono font-bold">
           CONFIRM
         </button>
       </div>
@@ -122,7 +122,7 @@ const OverviewTab = ({ analytics, registrations, onRefresh, refreshing }) => {
                 style={{ width: `${bookingRatio}%` }} />
             </div>
             <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-zinc-800/60 text-center font-mono text-xs">
-              <div><span className="text-zinc-600 block mb-1">TOTAL SLOTS</span><span className="text-white font-bold">{metrics.totalSlots}</span></div>
+              <div><span className="text-zinc-600 block mb-1">TOTAL SLOTS</span><span className="text-black font-bold">{metrics.totalSlots}</span></div>
               <div><span className="text-zinc-600 block mb-1">SECURED</span><span className="text-emerald-400 font-bold">{metrics.bookedSlots}</span></div>
               <div><span className="text-zinc-600 block mb-1">OPEN</span><span className="text-cyan-400 font-bold">{metrics.availableSlots}</span></div>
             </div>
@@ -137,10 +137,10 @@ const OverviewTab = ({ analytics, registrations, onRefresh, refreshing }) => {
               {productStats.map((item, i) => (
                 <div key={i} className="border border-zinc-800 bg-zinc-950/30 p-4 rounded-lg relative overflow-hidden hover:border-zinc-700 transition">
                   <div className="absolute top-1 right-2 font-mono text-3xl font-extrabold text-zinc-800 select-none">{item.kw}KW</div>
-                  <h3 className="font-mono text-xs font-semibold text-white mb-1 uppercase">{item.name}</h3>
+                  <h3 className="font-mono text-xs font-semibold text-black mb-1 uppercase">{item.name}</h3>
                   <p className="text-[10px] text-cyan-400 font-mono mb-3">{item.kw} KW</p>
                   <div className="flex justify-between border-t border-zinc-900 pt-2 font-mono text-xs">
-                    <div><span className="text-zinc-600 block text-[10px]">BOOKINGS</span><span className="font-bold text-white">{item.bookings}</span></div>
+                    <div><span className="text-zinc-600 block text-[10px]">BOOKINGS</span><span className="font-bold text-black">{item.bookings}</span></div>
                     <div className="text-right"><span className="text-zinc-600 block text-[10px]">REVENUE</span><span className="font-bold text-emerald-400">₹{parseFloat(item.revenue).toLocaleString('en-IN')}</span></div>
                   </div>
                 </div>
@@ -159,7 +159,7 @@ const OverviewTab = ({ analytics, registrations, onRefresh, refreshing }) => {
             {recentBookings.length > 0 ? recentBookings.map((b, i) => (
               <div key={i} className="p-3 border border-zinc-900 bg-zinc-950/20 rounded-lg flex justify-between items-start font-mono text-[10px]">
                 <div>
-                  <div className="font-semibold text-white text-xs truncate max-w-[130px]">{b.User?.name || 'Unknown'}</div>
+                  <div className="font-semibold text-black text-xs truncate max-w-[130px]">{b.User?.name || 'Unknown'}</div>
                   <div className="text-zinc-500">{b.booking_id}</div>
                   <div className="text-cyan-400">{b.Product?.name}</div>
                 </div>
@@ -173,7 +173,7 @@ const OverviewTab = ({ analytics, registrations, onRefresh, refreshing }) => {
             )}
           </div>
           <button onClick={() => document.getElementById('ledger-terminal')?.scrollIntoView({ behavior: 'smooth' })}
-            className="mt-4 w-full py-2 font-mono text-xs text-zinc-500 border border-zinc-800 hover:bg-zinc-900 hover:text-white rounded-lg transition flex items-center justify-center gap-2">
+            className="mt-4 w-full py-2 font-mono text-xs text-zinc-500 border border-zinc-800 hover:bg-zinc-900 hover:text-black rounded-lg transition flex items-center justify-center gap-2">
             VIEW FULL LEDGER <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </motion.div>
@@ -194,10 +194,10 @@ const OverviewTab = ({ analytics, registrations, onRefresh, refreshing }) => {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
               <input type="text" placeholder="Search name, email, ID..." value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full pl-8 pr-3 py-2 font-mono text-xs bg-zinc-950 border border-zinc-800 rounded-lg focus:border-cyan-500 outline-none text-white" />
+                className="w-full pl-8 pr-3 py-2 font-mono text-xs bg-zinc-950 border border-zinc-800 rounded-lg focus:border-cyan-500 outline-none text-black" />
             </div>
             <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)}
-              className="px-3 py-2 font-mono text-xs bg-zinc-950 border border-zinc-800 rounded-lg text-white focus:border-cyan-500 outline-none cursor-pointer">
+              className="px-3 py-2 font-mono text-xs bg-zinc-950 border border-zinc-800 rounded-lg text-black focus:border-cyan-500 outline-none cursor-pointer">
               <option value="all">ALL STATUS</option>
               <option value="confirmed">CONFIRMED</option>
               <option value="pending">PENDING</option>
@@ -220,9 +220,9 @@ const OverviewTab = ({ analytics, registrations, onRefresh, refreshing }) => {
             <tbody className="divide-y divide-zinc-900 font-mono text-xs text-zinc-300">
               {filtered.length > 0 ? filtered.map((reg, i) => (
                 <tr key={i} className="hover:bg-zinc-950/30 transition">
-                  <td className="py-3 px-5 font-semibold text-white">{reg.booking_id}</td>
+                  <td className="py-3 px-5 font-semibold text-black">{reg.booking_id}</td>
                   <td className="py-3 px-5">
-                    <div className="font-semibold text-white">{reg.User?.name}</div>
+                    <div className="font-semibold text-black">{reg.User?.name}</div>
                     <div className="text-zinc-500 text-[10px]">{reg.User?.email}</div>
                     <div className="text-zinc-600 text-[10px]">{reg.User?.mobile}</div>
                   </td>
@@ -352,8 +352,8 @@ const ProductsTab = () => {
             <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
               className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 w-full max-w-xl max-h-[90vh] overflow-y-auto shadow-2xl">
               <div className="flex justify-between items-center mb-5">
-                <h3 className="font-bold text-white font-mono tracking-wide">{editing ? 'EDIT PRODUCT' : 'NEW PRODUCT'}</h3>
-                <button onClick={() => setShowForm(false)} className="text-zinc-500 hover:text-white transition"><X className="w-5 h-5" /></button>
+                <h3 className="font-bold text-black font-mono tracking-wide">{editing ? 'EDIT PRODUCT' : 'NEW PRODUCT'}</h3>
+                <button onClick={() => setShowForm(false)} className="text-zinc-500 hover:text-black transition"><X className="w-5 h-5" /></button>
               </div>
               <div className="space-y-4">
                 {[
@@ -365,13 +365,13 @@ const ProductsTab = () => {
                     <label className="text-zinc-400 font-mono text-[10px] uppercase mb-1 block">{f.label}</label>
                     <input type={f.type || 'text'} value={form[f.key]} placeholder={f.placeholder}
                       onChange={e => setForm(p => ({ ...p, [f.key]: e.target.value }))}
-                      className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-white font-mono text-sm focus:border-cyan-500 outline-none" />
+                      className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-black font-mono text-sm focus:border-cyan-500 outline-none" />
                   </div>
                 ))}
                 <div>
                   <label className="text-zinc-400 font-mono text-[10px] uppercase mb-1 block">Availability</label>
                   <select value={form.availability_status} onChange={e => setForm(p => ({ ...p, availability_status: e.target.value }))}
-                    className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-white font-mono text-sm focus:border-cyan-500 outline-none cursor-pointer">
+                    className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-black font-mono text-sm focus:border-cyan-500 outline-none cursor-pointer">
                     <option value="available">Available</option>
                     <option value="unavailable">Unavailable</option>
                   </select>
@@ -380,13 +380,13 @@ const ProductsTab = () => {
                   <label className="text-zinc-400 font-mono text-[10px] uppercase mb-1 block">Specifications (JSON)</label>
                   <textarea rows={3} value={form.specifications} placeholder='{"fuel_type":"Diesel","runtime":"8hr"}'
                     onChange={e => setForm(p => ({ ...p, specifications: e.target.value }))}
-                    className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-white font-mono text-xs focus:border-cyan-500 outline-none resize-none" />
+                    className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-black font-mono text-xs focus:border-cyan-500 outline-none resize-none" />
                 </div>
                 <div>
                   <label className="text-zinc-400 font-mono text-[10px] uppercase mb-1 block">Benefits (one per line)</label>
                   <textarea rows={3} value={form.benefits} placeholder={"Auto-start\nFuel efficient\nQuiet operation"}
                     onChange={e => setForm(p => ({ ...p, benefits: e.target.value }))}
-                    className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-white font-mono text-xs focus:border-cyan-500 outline-none resize-none" />
+                    className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-black font-mono text-xs focus:border-cyan-500 outline-none resize-none" />
                 </div>
                 <div>
                   <label className="text-zinc-400 font-mono text-[10px] uppercase mb-1 block">Product Image</label>
@@ -430,7 +430,7 @@ const ProductsTab = () => {
                 <div className="absolute bottom-2 left-3 font-mono text-3xl font-extrabold text-zinc-800 select-none">{p.kw_capacity}KW</div>
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-white font-mono text-sm mb-1">{p.name}</h3>
+                <h3 className="font-bold text-black font-mono text-sm mb-1">{p.name}</h3>
                 <div className="flex justify-between items-center mb-3">
                   <span className="text-cyan-400 font-mono text-xs">{p.kw_capacity} KW Capacity</span>
                   <span className="text-emerald-400 font-mono text-sm font-bold">₹{parseFloat(p.price).toLocaleString('en-IN')}</span>
@@ -508,8 +508,8 @@ const UsersTab = () => {
             <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }}
               className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 w-full max-w-md shadow-2xl">
               <div className="flex justify-between items-center mb-5">
-                <h3 className="font-bold text-white font-mono">USER PROFILE</h3>
-                <button onClick={() => setViewUser(null)}><X className="w-5 h-5 text-zinc-500 hover:text-white transition" /></button>
+                <h3 className="font-bold text-black font-mono">USER PROFILE</h3>
+                <button onClick={() => setViewUser(null)}><X className="w-5 h-5 text-zinc-500 hover:text-black transition" /></button>
               </div>
               <div className="space-y-3">
                 {[
@@ -520,11 +520,11 @@ const UsersTab = () => {
                 ].map(([k, v]) => (
                   <div key={k} className="flex justify-between border-b border-zinc-800 pb-2">
                     <span className="text-zinc-500 font-mono text-xs uppercase">{k}</span>
-                    <span className="text-white font-mono text-xs font-semibold">{v || '—'}</span>
+                    <span className="text-black font-mono text-xs font-semibold">{v || '—'}</span>
                   </div>
                 ))}
               </div>
-              <button onClick={() => setViewUser(null)} className="mt-5 w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white rounded-xl font-mono text-sm transition">CLOSE</button>
+              <button onClick={() => setViewUser(null)} className="mt-5 w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 text-black rounded-xl font-mono text-sm transition">CLOSE</button>
             </motion.div>
           </motion.div>
         )}
@@ -537,7 +537,7 @@ const UsersTab = () => {
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
           <input type="text" placeholder="Search users..." value={search} onChange={e => setSearch(e.target.value)}
-            className="pl-8 pr-4 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-white font-mono text-xs focus:border-cyan-500 outline-none" />
+            className="pl-8 pr-4 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-black font-mono text-xs focus:border-cyan-500 outline-none" />
         </div>
       </div>
 
@@ -563,12 +563,12 @@ const UsersTab = () => {
                 <tr key={u.id} className="hover:bg-zinc-950/30 transition">
                   <td className="py-3 px-5 text-zinc-600">{i + 1}</td>
                   <td className="py-3 px-5">
-                    <div className="font-semibold text-white">{u.name}</div>
+                    <div className="font-semibold text-black">{u.name}</div>
                     <div className="text-zinc-500 text-[10px]">{u.email}</div>
                   </td>
                   <td className="py-3 px-5 text-zinc-400">{u.mobile}</td>
                   <td className="py-3 px-5">
-                    <span className="text-white font-semibold">{u.bookingCount}</span>
+                    <span className="text-black font-semibold">{u.bookingCount}</span>
                     <span className="text-zinc-600"> total / </span>
                     <span className="text-emerald-400">{u.confirmedCount}</span>
                     <span className="text-zinc-600"> confirmed</span>
@@ -679,18 +679,18 @@ const PaymentsTab = () => {
             <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }}
               className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6 w-full max-w-sm shadow-2xl">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="font-bold text-white font-mono">UPDATE PAYMENT STATUS</h3>
-                <button onClick={() => setStatusModal(null)}><X className="w-5 h-5 text-zinc-500 hover:text-white transition" /></button>
+                <h3 className="font-bold text-black font-mono">UPDATE PAYMENT STATUS</h3>
+                <button onClick={() => setStatusModal(null)}><X className="w-5 h-5 text-zinc-500 hover:text-black transition" /></button>
               </div>
               <div className="mb-4 p-3 bg-zinc-950 rounded-lg border border-zinc-800 font-mono text-xs space-y-1">
-                <div><span className="text-zinc-500">Booking: </span><span className="text-white">{statusModal.Registration?.booking_id}</span></div>
+                <div><span className="text-zinc-500">Booking: </span><span className="text-black">{statusModal.Registration?.booking_id}</span></div>
                 <div><span className="text-zinc-500">Guest: </span><span className="text-cyan-400">{statusModal.Registration?.User?.name}</span></div>
                 <div><span className="text-zinc-500">Amount: </span><span className="text-emerald-400 font-bold">₹{parseFloat(statusModal.amount).toLocaleString('en-IN')}</span></div>
                 <div><span className="text-zinc-500">Current: </span><StatusBadge status={statusModal.status} /></div>
               </div>
               <label className="text-zinc-400 font-mono text-[10px] uppercase mb-1 block">New Status</label>
               <select value={newStatus} onChange={e => setNewStatus(e.target.value)}
-                className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-white font-mono text-sm focus:border-cyan-500 outline-none mb-5 cursor-pointer">
+                className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-black font-mono text-sm focus:border-cyan-500 outline-none mb-5 cursor-pointer">
                 <option value="pending">Pending</option>
                 <option value="captured">Captured (Confirm)</option>
                 <option value="failed">Failed</option>
@@ -739,10 +739,10 @@ const PaymentsTab = () => {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
             <input type="text" placeholder="Search payments..." value={search} onChange={e => setSearch(e.target.value)}
-              className="pl-8 pr-4 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-white font-mono text-xs focus:border-cyan-500 outline-none" />
+              className="pl-8 pr-4 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-black font-mono text-xs focus:border-cyan-500 outline-none" />
           </div>
           <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)}
-            className="px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-white font-mono text-xs focus:border-cyan-500 outline-none cursor-pointer">
+            className="px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-black font-mono text-xs focus:border-cyan-500 outline-none cursor-pointer">
             <option value="all">ALL</option>
             <option value="captured">CAPTURED</option>
             <option value="pending">PENDING</option>
@@ -773,9 +773,9 @@ const PaymentsTab = () => {
                 </td></tr>
               ) : filtered.length > 0 ? filtered.map((p, i) => (
                 <tr key={p.id} className="hover:bg-zinc-950/30 transition">
-                  <td className="py-3 px-5 text-white font-semibold">{p.Registration?.booking_id || '—'}</td>
+                  <td className="py-3 px-5 text-black font-semibold">{p.Registration?.booking_id || '—'}</td>
                   <td className="py-3 px-5">
-                    <div className="text-white font-semibold">{p.Registration?.User?.name || '—'}</div>
+                    <div className="text-black font-semibold">{p.Registration?.User?.name || '—'}</div>
                     <div className="text-zinc-500 text-[10px]">{p.Registration?.User?.email}</div>
                   </td>
                   <td className="py-3 px-5">
@@ -852,7 +852,7 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#030303] flex flex-col items-center justify-center text-white relative pt-20">
+      <div className="min-h-screen bg-white flex flex-col items-center justify-center text-black relative pt-20">
         <div className="flex flex-col items-center gap-4">
           <div className="w-16 h-16 border-4 border-t-cyan-400 border-r-cyan-400/30 border-b-cyan-400/10 border-l-cyan-400/50 rounded-full animate-spin" />
           <p className="font-mono text-cyan-400 animate-pulse tracking-widest uppercase text-sm">Synchronizing Admin Command Center...</p>
@@ -862,13 +862,13 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#030303] text-white pt-24 pb-16">
+    <div className="min-h-screen bg-white text-black pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-extrabold tracking-wider bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-extrabold tracking-wider text-black">
               COMMAND CTR
             </h1>
             <p className="text-zinc-600 font-mono text-xs mt-1">SECURE LAUNCH EVENT COORDINATION TERMINAL • V3.026</p>
@@ -899,7 +899,7 @@ const AdminDashboard = () => {
               className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-mono text-xs font-semibold tracking-wider transition-all duration-200 ${
                 activeTab === tab.key
                   ? 'bg-cyan-500 text-zinc-950 shadow-lg shadow-cyan-500/20'
-                  : 'text-zinc-500 hover:text-white hover:bg-zinc-800'
+                  : 'text-zinc-500 hover:text-black hover:bg-zinc-800'
               }`}>
               <tab.icon className="w-3.5 h-3.5" />
               {tab.label}
@@ -926,3 +926,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+

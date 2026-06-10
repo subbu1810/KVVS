@@ -13,7 +13,7 @@ const Register = () => {
   const [products, setProducts] = useState([]);
   const [event, setEvent] = useState(null);
   const [selectedProductId, setSelectedProductId] = useState('');
-  
+
   // Checkout process states
   const [loading, setLoading] = useState(true);
   const [paying, setPaying] = useState(false);
@@ -67,7 +67,7 @@ const Register = () => {
     if (!selectedProductId || !event) {
       return setErrorMsg('Please choose a valid generator model.');
     }
-    
+
     setErrorMsg('');
     setPaying(true);
 
@@ -172,7 +172,7 @@ const Register = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#030303] flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="w-12 h-12 border-4 border-t-[#00f2fe] border-r-transparent border-slate-800 rounded-full animate-spin"></div>
       </div>
     );
@@ -181,11 +181,11 @@ const Register = () => {
   // --- Success State ---
   if (successBooking) {
     return (
-      <div className="relative min-h-screen bg-[#030303] flex items-center justify-center pt-24 px-4 overflow-hidden">
+      <div className="relative min-h-screen bg-white flex items-center justify-center pt-24 px-4 overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
         <div className="w-full max-w-xl glass-panel border border-green-500/30 bg-green-500/5 rounded-2xl p-6 sm:p-10 text-center shadow-2xl relative">
-          
-          <div className="w-16 h-16 rounded-full bg-slate-900 border border-green-400 shrink-0 flex items-center justify-center mx-auto mb-6 glow-shadow-cyan">
+
+          <div className="w-16 h-16 rounded-full bg-slate-100 border border-green-400 shrink-0 flex items-center justify-center mx-auto mb-6 glow-shadow-cyan">
             <ShieldCheck className="w-8 h-8 text-green-400" />
           </div>
 
@@ -193,15 +193,15 @@ const Register = () => {
             BOARDING PASS ACQUIRED
           </h2>
           <p className="text-[10px] text-slate-500 font-orbitron tracking-widest uppercase mb-6">Security Clearance Active</p>
-          
-          <div className="bg-slate-950/80 border border-slate-850 p-6 rounded-xl text-xs sm:text-sm text-left space-y-4 mb-8">
+
+          <div className="bg-slate-50/80 border border-slate-850 p-6 rounded-xl text-xs sm:text-sm text-left space-y-4 mb-8">
             <p className="border-b border-slate-900 pb-2">Booking ID: <span className="text-[#00f2fe] font-bold font-orbitron float-right">{successBooking.booking_id}</span></p>
-            <p className="border-b border-slate-900 pb-2">VIP Pass Code: <span className="text-white font-bold font-orbitron float-right">{successBooking.pass.pass_id}</span></p>
-            <p className="border-b border-slate-900 pb-2">Reserved Generator: <span className="text-slate-300 float-right">{selectedProduct.name}</span></p>
-            <p>Email Dispatch: <span className="text-slate-400 float-right">{user.email}</span></p>
+            <p className="border-b border-slate-900 pb-2">VIP Pass Code: <span className="text-black font-bold font-orbitron float-right">{successBooking.pass.pass_id}</span></p>
+            <p className="border-b border-slate-900 pb-2">Reserved Generator: <span className="text-black float-right">{selectedProduct.name}</span></p>
+            <p>Email Dispatch: <span className="text-black float-right">{user.email}</span></p>
           </div>
 
-          <p className="text-xs text-slate-400 leading-relaxed mb-8">
+          <p className="text-xs text-black leading-relaxed mb-8">
             Your high-tech downloadable PDF entry ticket with verification QR code has been successfully rendered on the server and emailed to your coordinates. Present it at the entrance scanner check-point.
           </p>
 
@@ -216,16 +216,16 @@ const Register = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#030303] pt-28 pb-20 overflow-hidden">
-      
+    <div className="relative min-h-screen bg-white pt-28 pb-20 overflow-hidden">
+
       {/* Decorative background grid */}
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* --- Header --- */}
         <div className="text-center mb-12">
-          <h1 className="font-orbitron font-extrabold text-3xl text-slate-100 mb-2 tracking-wider">
+          <h1 className="font-orbitron font-extrabold text-3xl text-black mb-2 tracking-wider">
             RESERVE PASS Clearance
           </h1>
           <p className="text-[10px] text-[#00f2fe] text-glow-cyan font-orbitron tracking-widest uppercase">Launch Event Priority Checkout</p>
@@ -239,45 +239,45 @@ const Register = () => {
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start max-w-5xl mx-auto">
-          
+
           {/* Left Column: Form Details & Product Selection */}
           <div className="lg:col-span-3 space-y-6">
-            
+
             {/* Stage 1: Personal Info Coordinates */}
             <div className="glass-panel border border-slate-800/80 rounded-2xl p-6 shadow-2xl relative">
-              <h3 className="font-orbitron font-bold text-xs text-slate-300 tracking-wider mb-5 flex items-center space-x-2 border-b border-slate-900 pb-3">
+              <h3 className="font-orbitron font-bold text-xs text-black tracking-wider mb-5 flex items-center space-x-2 border-b border-slate-900 pb-3">
                 <User className="w-4 h-4 text-[#00f2fe]" />
                 <span>1. ATTENDEE COORDINATES</span>
               </h3>
-              
+
               <div className="grid grid-cols-2 gap-4 text-xs">
                 <div>
                   <span className="text-slate-500 block">Name</span>
-                  <span className="text-slate-200 font-semibold mt-1 block">{user.name}</span>
+                  <span className="text-black font-semibold mt-1 block">{user.name}</span>
                 </div>
                 <div>
                   <span className="text-slate-500 block">Email Link</span>
-                  <span className="text-slate-200 font-semibold mt-1 block truncate">{user.email}</span>
+                  <span className="text-black font-semibold mt-1 block truncate">{user.email}</span>
                 </div>
                 <div className="col-span-2 pt-2">
                   <span className="text-slate-500 block">Shipping/Grid Address</span>
-                  <span className="text-slate-200 font-semibold mt-1 block leading-relaxed">{user.address}</span>
+                  <span className="text-black font-semibold mt-1 block leading-relaxed">{user.address}</span>
                 </div>
               </div>
             </div>
 
             {/* Stage 2: Generator Model selection */}
             <div className="glass-panel border border-slate-800/80 rounded-2xl p-6 shadow-2xl relative">
-              <h3 className="font-orbitron font-bold text-xs text-slate-300 tracking-wider mb-5 flex items-center space-x-2 border-b border-slate-900 pb-3">
+              <h3 className="font-orbitron font-bold text-xs text-black tracking-wider mb-5 flex items-center space-x-2 border-b border-slate-900 pb-3">
                 <ShoppingBag className="w-4 h-4 text-[#00f2fe]" />
                 <span>2. SELECT GENERATOR CAPACITY</span>
               </h3>
 
               <div className="space-y-4">
                 {products.map((prod) => (
-                  <label 
+                  <label
                     key={prod.id}
-                    className={`flex items-center justify-between p-4 rounded-xl border transition-all cursor-pointer ${selectedProductId === prod.id.toString() ? 'border-[#00f2fe] bg-cyan-500/5 glow-shadow-cyan' : 'border-slate-800/80 hover:border-slate-700 bg-slate-900/30'}`}
+                    className={`flex items-center justify-between p-4 rounded-xl border transition-all cursor-pointer ${selectedProductId === prod.id.toString() ? 'border-[#00f2fe] bg-cyan-500/5 glow-shadow-cyan' : 'border-slate-800/80 hover:border-slate-700 bg-slate-100/30'}`}
                   >
                     <div className="flex items-center space-x-3.5">
                       <input
@@ -286,11 +286,11 @@ const Register = () => {
                         value={prod.id}
                         checked={selectedProductId === prod.id.toString()}
                         onChange={(e) => setSelectedProductId(e.target.value)}
-                        className="w-4 h-4 text-cyan-500 bg-slate-900 border-slate-850 accent-cyan-400 focus:ring-0 focus:ring-offset-0"
+                        className="w-4 h-4 text-cyan-500 bg-slate-100 border-slate-850 accent-cyan-400 focus:ring-0 focus:ring-offset-0"
                       />
                       <div>
-                        <span className="font-orbitron font-bold text-xs sm:text-sm text-slate-200 block">{prod.name}</span>
-                        <span className="text-[10px] text-slate-400">{prod.kw_capacity} Kilowatt continuous load capability</span>
+                        <span className="font-orbitron font-bold text-xs sm:text-sm text-black block">{prod.name}</span>
+                        <span className="text-[10px] text-black">{prod.kw_capacity} Kilowatt continuous load capability</span>
                       </div>
                     </div>
                     <span className="font-orbitron text-xs sm:text-sm text-[#00f2fe] font-semibold shrink-0">
@@ -305,12 +305,12 @@ const Register = () => {
 
           {/* Right Column: Checkout Pricing Card */}
           <div className="lg:col-span-2 space-y-6">
-            
+
             {event && (
               <div className="glass-panel border border-slate-800/80 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00f2fe] to-transparent"></div>
-                
-                <h3 className="font-orbitron font-bold text-xs text-slate-300 tracking-wider mb-5 flex items-center space-x-2 border-b border-slate-900 pb-3">
+
+                <h3 className="font-orbitron font-bold text-xs text-black tracking-wider mb-5 flex items-center space-x-2 border-b border-slate-900 pb-3">
                   <CreditCard className="w-4 h-4 text-[#00f2fe]" />
                   <span>3. EVENT DEPOSIT BOOKING</span>
                 </h3>
@@ -320,30 +320,30 @@ const Register = () => {
                     <Calendar className="w-4.5 h-4.5 text-cyan-400 shrink-0 mt-0.5" />
                     <div>
                       <span className="text-slate-500 font-medium">Unveiling Launch Event</span>
-                      <p className="text-slate-200 font-semibold mt-1">{event.title}</p>
+                      <p className="text-black font-semibold mt-1">{event.title}</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3">
                     <MapPin className="w-4.5 h-4.5 text-cyan-400 shrink-0 mt-0.5" />
                     <div>
                       <span className="text-slate-500 font-medium">Clearance Gate Entrance</span>
-                      <p className="text-slate-200 font-semibold mt-1">{event.venue}</p>
+                      <p className="text-black font-semibold mt-1">{event.venue}</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Subtotals ledger */}
-                <div className="bg-slate-950/80 rounded-xl p-4 border border-slate-900 space-y-3 mb-6 text-xs text-slate-400">
+                <div className="bg-slate-50/80 rounded-xl p-4 border border-slate-900 space-y-3 mb-6 text-xs text-black">
                   <div className="flex justify-between">
                     <span>Priority Pass Preorder</span>
-                    <span className="text-slate-200">Rs. {parseFloat(event.ticket_price).toLocaleString()}</span>
+                    <span className="text-black">Rs. {parseFloat(event.ticket_price).toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Zero-Fuel Magnet Priority Queue</span>
                     <span className="text-green-400 font-bold font-orbitron">INCLUDED</span>
                   </div>
-                  <div className="border-t border-slate-800/80 pt-3 flex justify-between font-orbitron font-extrabold text-sm text-slate-100">
+                  <div className="border-t border-slate-800/80 pt-3 flex justify-between font-orbitron font-extrabold text-sm text-black">
                     <span>TOTAL AMOUNT</span>
                     <span className="text-[#00f2fe] text-glow-cyan">Rs. {parseFloat(event.ticket_price).toLocaleString()}</span>
                   </div>
@@ -376,11 +376,11 @@ const Register = () => {
       {/* --- Simulated Cyber Pay Sandbox Modal Overlay --- */}
       {showDemoModal && demoOrderData && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-[#030303]/90 backdrop-blur-md"></div>
-          
-          <div className="relative w-full max-w-md bg-slate-950 border border-cyan-500/40 glow-shadow-cyan rounded-2xl p-6 sm:p-8 shadow-2xl z-10 text-center">
-            
-            <div className="w-12 h-12 rounded-full bg-slate-900 border border-cyan-400 shrink-0 flex items-center justify-center mx-auto mb-4 glow-shadow-cyan">
+          <div className="absolute inset-0 bg-white/90 backdrop-blur-md"></div>
+
+          <div className="relative w-full max-w-md bg-slate-50 border border-cyan-500/40 glow-shadow-cyan rounded-2xl p-6 sm:p-8 shadow-2xl z-10 text-center">
+
+            <div className="w-12 h-12 rounded-full bg-slate-100 border border-cyan-400 shrink-0 flex items-center justify-center mx-auto mb-4 glow-shadow-cyan">
               <Zap className="w-6 h-6 text-cyan-400 fill-cyan-400 animate-pulse" />
             </div>
 
@@ -388,25 +388,25 @@ const Register = () => {
               VORTEX PAY SANDBOX
             </h3>
             <p className="text-[10px] text-slate-500 font-orbitron tracking-widest uppercase mb-6">Demo checkout Simulation Active</p>
-            
-            <div className="bg-slate-900 border border-slate-850 p-4 rounded-xl text-left text-xs mb-6 space-y-2">
-              <p>Receipt ID: <span className="text-slate-300 font-bold font-orbitron float-right">{demoOrderData.booking_id}</span></p>
-              <p>Order Hash: <span className="text-slate-300 font-bold font-orbitron float-right truncate w-40">{demoOrderData.order_id}</span></p>
+
+            <div className="bg-slate-100 border border-slate-850 p-4 rounded-xl text-left text-xs mb-6 space-y-2">
+              <p>Receipt ID: <span className="text-black font-bold font-orbitron float-right">{demoOrderData.booking_id}</span></p>
+              <p>Order Hash: <span className="text-black font-bold font-orbitron float-right truncate w-40">{demoOrderData.order_id}</span></p>
               <p>Amount Due: <span className="text-green-400 font-bold float-right">Rs. {parseFloat(demoOrderData.amount).toLocaleString()}</span></p>
             </div>
 
-            <p className="text-xs text-slate-400 leading-relaxed mb-6">
+            <p className="text-xs text-black leading-relaxed mb-6">
               This terminal is bypassing real credit card networks for evaluation purposes. Click Simulate Success to capture transactions and trigger ticket rendering and dispatching logs.
             </p>
 
             <div className="flex gap-4">
               <button
                 onClick={() => handleDemoPaymentVerify('fail')}
-                className="w-full py-2.5 rounded font-orbitron border border-slate-800 bg-slate-900/50 text-red-400 hover:text-white hover:bg-red-500/10 transition-colors text-xs"
+                className="w-full py-2.5 rounded font-orbitron border border-slate-800 bg-slate-100/50 text-red-400 hover:text-black hover:bg-red-500/10 transition-colors text-xs"
               >
                 SIMULATE FAIL
               </button>
-              
+
               <button
                 onClick={() => handleDemoPaymentVerify('success')}
                 className="w-full btn-cyber py-2.5 rounded text-xs"
@@ -424,3 +424,4 @@ const Register = () => {
 };
 
 export default Register;
+

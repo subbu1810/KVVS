@@ -10,15 +10,15 @@ const About = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#030303] pt-28 pb-20 overflow-hidden">
-      
+    <div className="relative min-h-screen bg-white pt-28 pb-20 overflow-hidden">
+
       {/* Visual background lights */}
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
       <div className="absolute top-1/3 left-10 w-96 h-96 rounded-full bg-cyan-500/5 blur-[100px] pointer-events-none"></div>
       <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-purple-500/5 blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* --- Header --- */}
         <div className="text-center mb-16">
           <motion.div
@@ -32,63 +32,99 @@ const About = () => {
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="font-orbitron font-extrabold text-3xl sm:text-5xl text-slate-100 mb-6"
+            className="font-orbitron font-extrabold text-3xl sm:text-5xl text-black mb-6"
           >
-            THE VORTEX REVOLUTION
+            THE K V V SAI ELECTRONIC REVOLUTION
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed"
+            className="text-black text-sm sm:text-base max-w-2xl mx-auto leading-relaxed"
           >
             Dismantling global resource combustion since 3026. Discover how we harness the fundamental magnetism of Samarium-Cobalt arrays to supply continuous clean power.
           </motion.p>
         </div>
 
-        {/* --- High-Tech Visual Section --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-          
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative rounded-2xl overflow-hidden border border-slate-800/80 shadow-2xl group"
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop" 
-              alt="Engineers working in sci-fi facility" 
-              className="w-full h-80 object-cover object-center filter brightness-75 group-hover:scale-105 transition-transform duration-700" 
-            />
-            {/* Overlay border details */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent opacity-90"></div>
-            <div className="absolute bottom-6 left-6 flex items-center space-x-2">
-              <ShieldCheck className="w-5 h-5 text-cyan-400" />
-              <span className="font-orbitron font-bold text-xs text-slate-200 tracking-wider">MAGNETIC ACCREDITATION CLEARANCE</span>
-            </div>
-          </motion.div>
+        {/* --- Magnetic Field Working Section --- */}
+        <div className="grid grid-cols-1 gap-12 mb-20">
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            <h2 className="font-orbitron font-bold text-xl sm:text-3xl text-[#00f2fe] text-glow-cyan leading-tight">
-              BREAKING THERMODYNAMIC FRONTIERS
-            </h2>
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-              Standard generators require external kinetic fuel sources—burning gas, turning massive steam turbines, or gathering solar photons. The Vortex core series breaks this loop. By utilizing permanent magnet spin forces, it produces clean, non-stop electrical currents indefinitely.
-            </p>
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-              Founded by clean-tech visionary engineers, our goal is to render the mechanical friction of combustion engines entirely obsolete. Whether powering remote estates, standard homes, or charging electric cars, the Vortex provides reliable power cells that require zero fuel.
-            </p>
+            <div className="text-center mb-10">
+              <h4 className="font-orbitron font-bold text-xl sm:text-3xl text-blue-600 leading-tight mb-4">
+                Magnetic Field Working in a Generator
+              </h4>
+              <p className="text-black text-sm sm:text-base max-w-3xl mx-auto leading-relaxed">
+                A generator converts mechanical energy into electrical energy using the principle of electromagnetic induction, discovered by Michael Faraday.
+              </p>
+            </div>
+
+            <div className="bg-white/50 backdrop-blur-sm border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+              <h5 className="font-orbitron font-bold text-lg sm:text-xl text-black mb-8 border-b border-slate-200 pb-4">
+                How the Magnetic Field Works
+              </h5>
+
+              <div className="space-y-8 text-black text-sm sm:text-base">
+
+                <div className="flex flex-col sm:flex-row sm:space-x-4">
+                  <span className="font-orbitron font-bold text-cyan-500 text-lg sm:text-xl shrink-0 w-8 mb-2 sm:mb-0">01</span>
+                  <div>
+                    <h6 className="font-bold mb-2">Magnetic Field Creation</h6>
+                    <p className="text-slate-700">A strong magnet (permanent magnet or electromagnet) creates a magnetic field between its north and south poles.</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:space-x-4">
+                  <span className="font-orbitron font-bold text-cyan-500 text-lg sm:text-xl shrink-0 w-8 mb-2 sm:mb-0">02</span>
+                  <div>
+                    <h6 className="font-bold mb-2">Movement of the Conductor</h6>
+                    <p className="text-slate-700">A coil of wire (armature) is rotated within this magnetic field by a turbine, engine, or other mechanical source.</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:space-x-4">
+                  <span className="font-orbitron font-bold text-cyan-500 text-lg sm:text-xl shrink-0 w-8 mb-2 sm:mb-0">03</span>
+                  <div>
+                    <h6 className="font-bold mb-2">Cutting Magnetic Flux</h6>
+                    <p className="text-slate-700">As the coil rotates, it cuts through the magnetic field lines. The magnetic flux linked with the coil changes continuously.</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:space-x-4">
+                  <span className="font-orbitron font-bold text-cyan-500 text-lg sm:text-xl shrink-0 w-8 mb-2 sm:mb-0">04</span>
+                  <div>
+                    <h6 className="font-bold mb-2">Induced EMF</h6>
+                    <p className="text-slate-700 mb-4">Due to the changing magnetic flux, an electromotive force (EMF) is induced in the coil according to Faraday's Law.</p>
+                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 text-xs sm:text-sm font-mono max-w-sm">
+                      <p className="font-bold mb-2 text-slate-800 border-b border-slate-200 pb-1">Where:</p>
+                      <p className="mb-1"><span className="font-bold">E</span> = induced voltage (EMF)</p>
+                      <p className="mb-1"><span className="font-bold">N</span> = number of turns in the coil</p>
+                      <p><span className="font-bold">Φ</span> = magnetic flux</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:space-x-4">
+                  <span className="font-orbitron font-bold text-cyan-500 text-lg sm:text-xl shrink-0 w-8 mb-2 sm:mb-0">05</span>
+                  <div>
+                    <h6 className="font-bold mb-2">Electric Current Production</h6>
+                    <p className="text-slate-700">If the coil is connected to an external circuit, the induced EMF causes current to flow, producing electrical power.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </motion.div>
 
         </div>
 
         {/* --- Three-Step Core Science Breakdown --- */}
         <div className="border-t border-slate-900 pt-16">
-          <h2 className="font-orbitron font-bold text-center text-xl sm:text-3xl text-slate-100 mb-12">
+          <h2 className="font-orbitron font-bold text-center text-xl sm:text-3xl text-black mb-12">
             PHYSICS MATRIX CORE
           </h2>
 
@@ -104,15 +140,15 @@ const About = () => {
               >
                 {/* Visual accent top borders */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00f2fe] to-transparent"></div>
-                
-                <div className="p-3 w-max bg-slate-900 border border-slate-800 rounded-full mb-6">
+
+                <div className="p-3 w-max bg-slate-100 border border-slate-800 rounded-full mb-6">
                   {step.icon}
                 </div>
-                
-                <h3 className="font-orbitron font-bold text-sm tracking-wider text-slate-200 mb-3">
+
+                <h3 className="font-orbitron font-bold text-sm tracking-wider text-black mb-3">
                   {step.title}
                 </h3>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-black leading-relaxed">
                   {step.desc}
                 </p>
               </motion.div>
@@ -126,3 +162,4 @@ const About = () => {
 };
 
 export default About;
+

@@ -15,14 +15,60 @@ const Products = () => {
 
   useEffect(() => {
     const fetchShowroomData = async () => {
+      const hardcodedProducts = [
+        {
+          id: 'static-1',
+          name: 'Resources Free Generator',
+          kw_capacity: 6,
+          price: '6000',
+          image_url: '/images/Resources free generator.jpg',
+          benefits: [
+            'Runs on its own source, no external resources needed (solar, water, fuel, battery, KEB)',
+            'Affordable maintenance compared to traditional generators',
+            '90% of load guaranteed on the requirement of output energy'
+          ],
+          specifications: {
+            availability: '6kw to 40kw output power generation',
+            load_guarantee: '90%',
+            applications: 'Agriculture',
+            type: 'Resource-Free Generator'
+          }
+        },
+        {
+          id: 'static-2',
+          name: 'Energy Booster System',
+          kw_capacity: 40,
+          price: '6000',
+          image_url: '/images/Energy booster.jpg', // Vite serves public directory from root '/'
+          benefits: [
+            'Consumes 10kw input to distribute 40kw load (1:4 ratio)',
+            'High-efficiency ENERGY BOOSTER system',
+            '90% load guaranteed on the requirement of output power'
+          ],
+          specifications: {
+            availability: '40kw to 1MA output power supply',
+            input: '10 kW from LT',
+            output: '40 kW Load',
+            applications: 'Commercial industries, Agricultural'
+          }
+        }
+      ];
+
       try {
         const prodRes = await productsAPI.getAll();
-        setProducts(prodRes.data);
+
+        // Filter out Vortex products from API response
+        const apiProducts = (prodRes.data || []).filter(p => !p.name.includes('Vortex'));
+
+        // Combine hardcoded and API products
+        setProducts([...hardcodedProducts, ...apiProducts]);
 
         const eventRes = await eventAPI.getActive();
         setEvent(eventRes.data);
       } catch (error) {
         console.error('Failed to load showroom data:', error);
+        // If API fails, at least show the hardcoded products
+        setProducts(hardcodedProducts);
       } finally {
         setLoading(false);
       }
@@ -37,39 +83,38 @@ const Products = () => {
   // Filter products based on search term and selected capacity
   const filteredProducts = products.filter((prod) => {
     const matchesSearch = prod.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCapacity = 
-      selectedCapacity === 'all' || 
-      (selectedCapacity === '2' && prod.kw_capacity <= 2) ||
-      (selectedCapacity === '5' && prod.kw_capacity > 2 && prod.kw_capacity <= 5) ||
-      (selectedCapacity === '10' && prod.kw_capacity > 5);
-    
+    const matchesCapacity =
+      selectedCapacity === 'all' ||
+      (selectedCapacity === '6' && prod.kw_capacity <= 6) ||
+      (selectedCapacity === '40' && prod.kw_capacity >= 40);
+
     return matchesSearch && matchesCapacity;
   });
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#030303] flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="w-12 h-12 border-4 border-t-[#00f2fe] border-r-transparent border-slate-800 rounded-full animate-spin"></div>
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen bg-[#030303] pt-28 pb-20 overflow-hidden">
-      
+    <div className="relative min-h-screen bg-white pt-28 pb-20 overflow-hidden">
+
       {/* Decorative background graphics */}
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
       <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-cyan-500/5 blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-1/4 left-0 w-96 h-96 rounded-full bg-purple-500/5 blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* --- Header Section --- */}
         <div className="text-center mb-12">
-          <h1 className="font-orbitron font-extrabold text-3xl sm:text-5xl text-slate-100 mb-4 tracking-wider">
-            SHOWROOM SHOWCASE
+          <h1 className="font-orbitron font-extrabold text-3xl sm:text-5xl text-black mb-4 tracking-wider">
+            PRODUCTS
           </h1>
-          <p className="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
+          <p className="text-black text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
             Browse our Vortex Series of commercial-grade zero-point magnetic electricity generators. Secure early priority bookings.
           </p>
         </div>
@@ -78,48 +123,42 @@ const Products = () => {
         <div className="glass-panel border border-slate-800/80 rounded-xl p-4 mb-10 flex flex-col md:flex-row items-center justify-between gap-4 shadow-xl">
           {/* Search bar */}
           <div className="relative w-full md:w-96">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
             <input
               type="text"
               placeholder="Search generator models..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-slate-900 border border-slate-800 rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
+              className="w-full pl-10 pr-4 py-2.5 bg-slate-100 border border-slate-800 rounded-lg text-sm text-black placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
             />
           </div>
 
           {/* Capacity Filters */}
           <div className="flex items-center space-x-2 w-full md:w-auto overflow-x-auto py-1 scroll-none">
-            <SlidersHorizontal className="w-4 h-4 text-slate-400 shrink-0" />
+            <SlidersHorizontal className="w-4 h-4 text-black shrink-0" />
             <button
               onClick={() => setSelectedCapacity('all')}
-              className={`px-4 py-1.5 rounded-full text-xs font-orbitron font-semibold shrink-0 transition-colors ${selectedCapacity === 'all' ? 'bg-[#00f2fe] text-slate-900 glow-shadow-cyan' : 'border border-slate-800 text-slate-400 hover:text-white'}`}
+              className={`px-4 py-1.5 rounded-full text-xs font-orbitron font-semibold shrink-0 transition-colors ${selectedCapacity === 'all' ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30' : 'border border-slate-800 text-black hover:text-black'}`}
             >
               ALL CAPACITIES
             </button>
             <button
-              onClick={() => setSelectedCapacity('2')}
-              className={`px-4 py-1.5 rounded-full text-xs font-orbitron font-semibold shrink-0 transition-colors ${selectedCapacity === '2' ? 'bg-[#00f2fe] text-slate-900 glow-shadow-cyan' : 'border border-slate-800 text-slate-400 hover:text-white'}`}
+              onClick={() => setSelectedCapacity('6')}
+              className={`px-4 py-1.5 rounded-full text-xs font-orbitron font-semibold shrink-0 transition-colors ${selectedCapacity === '6' ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30' : 'border border-slate-800 text-black hover:text-black'}`}
             >
-              2KW MODEL
+              6KW MODEL
             </button>
             <button
-              onClick={() => setSelectedCapacity('5')}
-              className={`px-4 py-1.5 rounded-full text-xs font-orbitron font-semibold shrink-0 transition-colors ${selectedCapacity === '5' ? 'bg-[#00f2fe] text-slate-900 glow-shadow-cyan' : 'border border-slate-800 text-slate-400 hover:text-white'}`}
+              onClick={() => setSelectedCapacity('40')}
+              className={`px-4 py-1.5 rounded-full text-xs font-orbitron font-semibold shrink-0 transition-colors ${selectedCapacity === '40' ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30' : 'border border-slate-800 text-black hover:text-black'}`}
             >
-              5KW MODEL
-            </button>
-            <button
-              onClick={() => setSelectedCapacity('10')}
-              className={`px-4 py-1.5 rounded-full text-xs font-orbitron font-semibold shrink-0 transition-colors ${selectedCapacity === '10' ? 'bg-[#00f2fe] text-slate-900 glow-shadow-cyan' : 'border border-slate-800 text-slate-400 hover:text-white'}`}
-            >
-              10KW+ MODEL
+              40KW+ MODEL
             </button>
           </div>
         </div>
 
         {/* --- Product Grid Catalog --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="flex flex-wrap justify-center gap-8">
           {filteredProducts.map((prod) => (
             <motion.div
               key={prod.id}
@@ -128,38 +167,38 @@ const Products = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4 }}
-              className="glass-panel border border-slate-800/80 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col"
+              className="glass-panel border border-slate-800/80 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col w-full max-w-[380px]"
             >
               {/* Product Badge */}
-              <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded bg-[#030303]/85 border border-[#00f2fe]/40 font-orbitron text-[10px] font-bold tracking-widest text-[#00f2fe] text-glow-cyan flex items-center space-x-1">
-                <Zap className="w-3 h-3 fill-cyan-400 animate-pulse" />
+              <div className="absolute top-4 left-4 z-10 px-3 py-1 rounded bg-white/85 border border-blue-500/40 font-orbitron text-[10px] font-bold tracking-widest text-blue-600 flex items-center space-x-1">
+                <Zap className="w-3 h-3 text-blue-500 fill-blue-500 animate-pulse" />
                 <span>{prod.kw_capacity} KW</span>
               </div>
 
               {/* Product Photo */}
-              <div className="relative h-48 bg-slate-900 overflow-hidden border-b border-slate-800/80">
+              <div className="relative bg-slate-100 overflow-hidden border-b border-slate-800/80">
                 <img
                   src={prod.image_url}
                   alt={prod.name}
-                  className="w-full h-full object-cover filter brightness-90 hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto object-contain filter brightness-90 hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/90 via-transparent to-transparent pointer-events-none"></div>
               </div>
 
               {/* Product details */}
               <div className="p-6 flex-grow flex flex-col justify-between">
                 <div>
-                  <h3 className="font-orbitron font-bold text-lg text-slate-200 tracking-wide mb-2">{prod.name}</h3>
+                  <h3 className="font-orbitron font-bold text-lg text-black tracking-wide mb-2">{prod.name}</h3>
                   <div className="flex items-baseline space-x-2 mb-4">
-                    <span className="text-xl font-orbitron font-extrabold text-green-400">Rs. {parseFloat(prod.price).toLocaleString()}</span>
+                    <span className="text-xl font-orbitron font-extrabold text-green-600">Rs. {parseFloat(prod.price).toLocaleString()} Per W</span>
                     <span className="text-[10px] text-slate-500 font-medium">LAUNCH PREORDER BOOKING FEE</span>
                   </div>
 
                   {/* Highlights benefits */}
-                  <ul className="space-y-2 mb-6 text-xs text-slate-400">
+                  <ul className="space-y-2 mb-6 text-xs text-black">
                     {prod.benefits.slice(0, 3).map((benefit, i) => (
                       <li key={i} className="flex items-start space-x-2">
-                        <Shield className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                        <Shield className="w-3.5 h-3.5 text-blue-500 shrink-0 mt-0.5" />
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -169,7 +208,7 @@ const Products = () => {
                 <div className="space-y-3 pt-4 border-t border-slate-800/50">
                   <button
                     onClick={() => setSelectedProductDetails(prod)}
-                    className="w-full py-2 bg-slate-900 border border-slate-800 rounded font-orbitron text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition-all flex items-center justify-center space-x-1"
+                    className="w-full py-2 bg-slate-100 border border-slate-800 rounded font-orbitron text-xs text-black hover:text-black hover:bg-slate-300 transition-all flex items-center justify-center space-x-1"
                   >
                     <HardDrive className="w-3.5 h-3.5" />
                     <span>TECHNICAL SPECIFICATIONS</span>
@@ -191,7 +230,7 @@ const Products = () => {
         {filteredProducts.length === 0 && (
           <div className="text-center py-20 border border-dashed border-slate-800 rounded-2xl glass-panel">
             <HelpCircle className="w-12 h-12 text-slate-500 mx-auto mb-4" />
-            <h3 className="font-orbitron text-base text-slate-300 mb-2">NO GENERATOR MODELS FOUND</h3>
+            <h3 className="font-orbitron text-base text-black mb-2">NO GENERATOR MODELS FOUND</h3>
             <p className="text-xs text-slate-500">Try modifying your search queries or capacity filter toggles.</p>
           </div>
         )}
@@ -207,28 +246,28 @@ const Products = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProductDetails(null)}
-              className="absolute inset-0 bg-[#030303]/85 backdrop-blur-md"
+              className="absolute inset-0 bg-white/85 backdrop-blur-md"
             ></motion.div>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              className="relative w-full max-w-2xl bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl z-10 overflow-hidden"
+              className="relative w-full max-w-2xl bg-slate-50 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl z-10 overflow-hidden"
             >
               {/* Glowing decorative frame */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00f2fe] to-transparent"></div>
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
 
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="font-orbitron font-extrabold text-xl text-[#00f2fe] tracking-wide text-glow-cyan">
+                  <h3 className="font-orbitron font-extrabold text-xl text-blue-600 tracking-wide text-glow-blue">
                     {selectedProductDetails.name} Technical Schema
                   </h3>
                   <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-1">Zero-Point Mechanical Blueprints</p>
                 </div>
                 <button
                   onClick={() => setSelectedProductDetails(null)}
-                  className="p-1 rounded hover:bg-slate-900 border border-slate-800 hover:border-slate-600 transition-colors text-slate-400 hover:text-white"
+                  className="p-1 rounded hover:bg-slate-100 border border-slate-800 hover:border-slate-600 transition-colors text-black hover:text-black"
                 >
                   ✕
                 </button>
@@ -237,9 +276,9 @@ const Products = () => {
               {/* Grid of specs */}
               <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-8 text-xs">
                 {Object.entries(selectedProductDetails.specifications).map(([key, val]) => (
-                  <div key={key} className="p-3 bg-slate-900/50 border border-slate-800/80 rounded-lg">
+                  <div key={key} className="p-3 bg-slate-100/50 border border-slate-800/80 rounded-lg">
                     <span className="text-slate-500 font-orbitron block capitalize mb-1">{key.replace('_', ' ')}</span>
-                    <span className="text-slate-200 font-semibold">{val}</span>
+                    <span className="text-black font-semibold">{val}</span>
                   </div>
                 ))}
               </div>
@@ -247,7 +286,7 @@ const Products = () => {
               <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-slate-800/60">
                 <button
                   onClick={() => setSelectedProductDetails(null)}
-                  className="w-full py-2.5 rounded font-orbitron border border-slate-700 bg-slate-900/20 text-slate-400 hover:text-white transition-all text-xs"
+                  className="w-full py-2.5 rounded font-orbitron border border-slate-700 bg-slate-100/20 text-black hover:text-black transition-all text-xs"
                 >
                   DISMISS CORE BLUEPRINTS
                 </button>
@@ -272,3 +311,4 @@ const Products = () => {
 };
 
 export default Products;
+

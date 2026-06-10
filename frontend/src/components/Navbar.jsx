@@ -16,32 +16,30 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Technology', path: '/about' },
-    { name: 'Showroom', path: '/products' },
+    { name: 'Working Based', path: '/about' },
+    { name: 'Products', path: '/products' },
     { name: 'Event', path: '/event' },
     { name: 'Contact', path: '/contact' }
   ];
 
-  const activeStyle = ({ isActive }) => 
-    `px-4 py-2 rounded-md font-orbitron text-sm transition-all duration-300 ${
-      isActive 
-        ? 'text-[#00f2fe] border-b-2 border-[#00f2fe] text-glow-cyan bg-slate-900/30' 
-        : 'text-slate-300 hover:text-[#00f2fe] hover:bg-slate-900/10'
+  const activeStyle = ({ isActive }) =>
+    `px-4 py-2 rounded-md font-orbitron text-sm transition-all duration-300 ${isActive
+      ? 'text-[#B8860B] border-b-2 border-[#B8860B] bg-slate-100/30'
+      : 'text-black hover:text-[#B8860B] hover:bg-slate-100/10'
     }`;
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 glass-panel border-b border-slate-800/60 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          
+
           {/* Logo Branding */}
           <Link to="/" className="flex items-center space-x-2 group">
             <div className="relative">
-              <Cpu className="w-8 h-8 text-[#00f2fe] group-hover:rotate-90 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-[#00f2fe] rounded-full blur-md opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
+              <img src="/images/Logo Kvvsai.jpg" alt="KVVSai Logo" className="w-16 h-16 object-contain" />
             </div>
-            <span className="font-orbitron font-extrabold text-xl tracking-widest bg-gradient-to-r from-[#00f2fe] via-blue-500 to-[#7c3aed] bg-clip-text text-transparent">
-              VORTEX
+            <span className="font-orbitron font-extrabold text-xl tracking-widest text-black">
+              K V V SAI ELECTRONIC
             </span>
           </Link>
 
@@ -73,13 +71,13 @@ const Navbar = () => {
                 <div className="flex items-center space-x-2 border-l border-slate-700/60 pl-4">
                   <div className="text-right">
                     <p className="text-xs text-[#00f2fe] font-orbitron">{user.name.split(' ')[0]}</p>
-                    <p className="text-[10px] text-slate-400 capitalize">{user.role}</p>
+                    <p className="text-[10px] text-black capitalize">{user.role}</p>
                   </div>
-                  <User className="w-8 h-8 p-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300" />
+                  <User className="w-8 h-8 p-1.5 bg-slate-100 border border-slate-800 rounded-full text-black" />
                 </div>
 
-                <button 
-                  onClick={handleLogout} 
+                <button
+                  onClick={handleLogout}
                   className="flex items-center space-x-1 p-2 rounded-md text-red-400 hover:bg-red-500/10 transition-colors"
                   title="Logout"
                 >
@@ -88,7 +86,7 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex items-center space-x-3">
-                <Link to="/login" className="flex items-center space-x-1 px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors">
+                <Link to="/login" className="flex items-center space-x-1 px-4 py-2 text-sm text-black hover:text-black transition-colors">
                   <LogIn className="w-4 h-4" />
                   <span>Terminal Access</span>
                 </Link>
@@ -103,7 +101,7 @@ const Navbar = () => {
           <div className="flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-black hover:bg-slate-800 focus:outline-none"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -120,7 +118,7 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className="block px-3 py-2.5 rounded-md text-base font-orbitron font-medium text-slate-300 hover:text-[#00f2fe] hover:bg-slate-900"
+                className="block px-3 py-2.5 rounded-md text-base font-orbitron font-medium text-black hover:text-[#B8860B] hover:bg-slate-100"
               >
                 {link.name}
               </Link>
@@ -130,13 +128,13 @@ const Navbar = () => {
               {user ? (
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
-                    <User className="w-9 h-9 p-1.5 bg-slate-900 border border-slate-800 rounded-full text-slate-300" />
+                    <User className="w-9 h-9 p-1.5 bg-slate-100 border border-slate-800 rounded-full text-black" />
                     <div>
                       <p className="text-sm text-[#00f2fe] font-orbitron">{user.name}</p>
-                      <p className="text-xs text-slate-400 capitalize">{user.role}</p>
+                      <p className="text-xs text-black capitalize">{user.role}</p>
                     </div>
                   </div>
-                  
+
                   {isAdmin ? (
                     <Link
                       to="/admin"
@@ -170,7 +168,7 @@ const Navbar = () => {
                   <Link
                     to="/login"
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center space-x-2 w-full px-4 py-2.5 rounded border border-slate-800 text-sm font-medium text-slate-300 hover:text-white"
+                    className="flex items-center justify-center space-x-2 w-full px-4 py-2.5 rounded border border-slate-800 text-sm font-medium text-black hover:text-black"
                   >
                     <LogIn className="w-4 h-4" />
                     <span>Terminal Access</span>
@@ -193,3 +191,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

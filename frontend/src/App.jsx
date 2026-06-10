@@ -29,7 +29,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="flex flex-col min-h-screen bg-[#030303] text-white">
+        <div className="flex flex-col min-h-screen bg-white text-black">
           {/* Main Navigation Panel */}
           <Navbar />
           

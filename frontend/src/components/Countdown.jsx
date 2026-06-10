@@ -14,7 +14,7 @@ const Countdown = ({ targetDate }) => {
 
     const calculateTime = () => {
       const difference = +new Date(targetDate) - +new Date();
-      
+
       if (difference <= 0) {
         setHasLaunched(true);
         return;
@@ -36,9 +36,9 @@ const Countdown = ({ targetDate }) => {
 
   if (hasLaunched) {
     return (
-      <div className="text-center font-orbitron border border-[#00f2fe]/40 rounded-lg p-6 bg-slate-950/80 glow-shadow-cyan max-w-xl mx-auto">
+      <div className="text-center font-orbitron border border-[#00f2fe]/40 rounded-lg p-6 bg-slate-50/80 glow-shadow-cyan max-w-xl mx-auto">
         <h3 className="text-2xl text-[#00f2fe] font-extrabold animate-pulse tracking-wider mb-2">LAUNCH INITIATED</h3>
-        <p className="text-sm text-slate-300">Superconducting active magnetic core is currently online at target grid cells.</p>
+        <p className="text-sm text-black">Superconducting active magnetic core is currently online at target grid cells.</p>
       </div>
     );
   }
@@ -54,20 +54,20 @@ const Countdown = ({ targetDate }) => {
     <div className="flex items-center justify-center space-x-3 sm:space-x-6">
       {timeBlocks.map((block) => (
         <div key={block.label} className="flex flex-col items-center">
-          <div className="relative glass-panel rounded-lg w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center border border-slate-700/60 overflow-hidden shadow-2xl">
+          <div className="relative glass-panel rounded-lg w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center border border-blue-500 overflow-hidden shadow-2xl">
             {/* Glowing top line */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00f2fe] to-transparent"></div>
-            
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+
             {/* Value Ticker */}
-            <span className="font-orbitron font-extrabold text-2xl sm:text-5xl text-[#00f2fe] text-glow-cyan">
+            <span className="font-orbitron font-extrabold text-2xl sm:text-5xl text-blue-600">
               {String(block.value).padStart(2, '0')}
             </span>
 
             {/* Futuristic Tech Dots */}
-            <div className="absolute bottom-1 right-1 w-1 h-1 bg-[#00f2fe]/50 rounded-full"></div>
-            <div className="absolute bottom-1 left-1 w-1 h-1 bg-[#00f2fe]/50 rounded-full"></div>
+            <div className="absolute bottom-1 right-1 w-1 h-1 bg-blue-600/50 rounded-full"></div>
+            <div className="absolute bottom-1 left-1 w-1 h-1 bg-blue-600/50 rounded-full"></div>
           </div>
-          <span className="font-orbitron text-[9px] sm:text-xs text-slate-400 font-bold tracking-widest mt-2">
+          <span className="font-orbitron text-[9px] sm:text-xs text-black font-bold tracking-widest mt-2">
             {block.label}
           </span>
         </div>
@@ -77,3 +77,4 @@ const Countdown = ({ targetDate }) => {
 };
 
 export default Countdown;
+
