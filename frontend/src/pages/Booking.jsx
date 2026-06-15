@@ -56,41 +56,40 @@ const Register = () => {
 
   useEffect(() => {
     const loadBookingParameters = async () => {
+      const hardcodedProducts = [
+        {
+          id: '1',
+          name: 'Resources Free Generator',
+          min_kw: 6,
+          max_kw: 40,
+          base_price_per_kw: 6000
+        },
+        {
+          id: '2',
+          name: 'Energy Booster System',
+          min_kw: 40,
+          max_kw: 1000,
+          base_price_per_kw: 6000
+        }
+      ];
+
+      setProducts(hardcodedProducts);
+
+      // Pre-select product from URL search param or navigation state
+      const urlProductId = location.state?.product || searchParams.get('product');
+      if (urlProductId && hardcodedProducts.find(p => p.id === urlProductId)) {
+        setSelectedProductId(urlProductId);
+      } else {
+        setSelectedProductId('1');
+      }
+
       try {
         const prodRes = await productsAPI.getAll();
-
-        const hardcodedProducts = [
-          {
-            id: '1',
-            name: 'Resources Free Generator',
-            min_kw: 6,
-            max_kw: 40,
-            base_price_per_kw: 6000
-          },
-          {
-            id: '2',
-            name: 'Energy Booster System',
-            min_kw: 40,
-            max_kw: 1000,
-            base_price_per_kw: 6000
-          }
-        ];
-
-        setProducts(hardcodedProducts);
-
-        // Pre-select product from URL search param or navigation state
-        const urlProductId = location.state?.product || searchParams.get('product');
-        if (urlProductId && hardcodedProducts.find(p => p.id === urlProductId)) {
-          setSelectedProductId(urlProductId);
-        } else {
-          setSelectedProductId('1');
-        }
-
         const eventRes = await eventAPI.getActive();
         setEvent(eventRes.data);
       } catch (error) {
         console.error('Failed to load booking parameters:', error);
-        setErrorMsg('Failed to synchronize launch event parameters.');
+        // setErrorMsg('Failed to synchronize launch event parameters.');
       } finally {
         setLoading(false);
       }

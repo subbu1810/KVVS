@@ -114,11 +114,11 @@ const EventDetails = () => {
               <div className="glass-panel border border-slate-800/80 rounded-2xl p-6 shadow-2xl relative">
                 <h3 className="font-orbitron font-bold text-xs text-black tracking-wider mb-4 flex items-center space-x-1.5">
                   <Users className="w-4 h-4 text-blue-600" />
-                  <span>BOOKING GENERATOR CAPACITIES </span>
+                  <span>BOOKING CAPACITIES </span>
                 </h3>
 
                 <div className="flex items-center justify-between text-xs mb-3">
-                  <span className="text-slate-500"> Booking Generator </span>
+                  <span className="text-slate-500"> Booking Events</span>
                   <span className="text-black font-bold">{event.total_slots - event.available_slots} / {event.total_slots}</span>
                 </div>
 

@@ -9,15 +9,39 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'http://localhost:5000',
-        changeOrigin: true
+        changeOrigin: true,
+        configure: (proxy, options) => {
+          proxy.on('error', (err, req, res) => {
+            if (res && !res.headersSent) {
+               res.writeHead(502, { 'Content-Type': 'application/json' });
+               res.end(JSON.stringify({ error: 'Backend down' }));
+            }
+          });
+        }
       },
       '/passes': {
         target: 'http://localhost:5000',
-        changeOrigin: true
+        changeOrigin: true,
+        configure: (proxy, options) => {
+          proxy.on('error', (err, req, res) => {
+            if (res && !res.headersSent) {
+               res.writeHead(502, { 'Content-Type': 'application/json' });
+               res.end(JSON.stringify({ error: 'Backend down' }));
+            }
+          });
+        }
       },
       '/uploads': {
         target: 'http://localhost:5000',
-        changeOrigin: true
+        changeOrigin: true,
+        configure: (proxy, options) => {
+          proxy.on('error', (err, req, res) => {
+            if (res && !res.headersSent) {
+               res.writeHead(502, { 'Content-Type': 'application/json' });
+               res.end(JSON.stringify({ error: 'Backend down' }));
+            }
+          });
+        }
       }
     }
   }
